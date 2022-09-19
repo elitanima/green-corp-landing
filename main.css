@@ -1,3 +1,14 @@
+/* animation */
+@keyframes rotation {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+/* style */
 body {
     font-family: 'Raleway', sans-serif;
     color: #213053;
@@ -9,6 +20,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
 }
 
 .header__logo {
@@ -51,6 +66,8 @@ button:hover {
 .about__sun-image {
     width: 100px;
     height: 100px;
+    animation: rotation 10s linear infinite;
+    position: absolute;
 }
 
 .about {
@@ -129,7 +146,7 @@ button:hover {
     margin-bottom: 15px;
 }
 
-.form input, form select {
+.form input, .form select {
     font-size: 18px;
     color: #213053;
     height: 60px;
@@ -157,6 +174,7 @@ footer {
     font-size: 16px;
     font-weight: 600;
 }
+
 .footer__container {
     display: flex;
     justify-content: center;
