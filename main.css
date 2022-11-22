@@ -74,6 +74,7 @@ button:hover {
 }
 
 .about {
+    position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -356,6 +357,13 @@ footer {
 
 .footer__links a {
     margin-bottom: 15px;
+}
+
+.orb-canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
 }
 
 /* media tablet */
