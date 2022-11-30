@@ -22,13 +22,14 @@ function initIncreaseNumberAnimation() {
     increaseNumberAnimationStep(i, element, endNumber);
 }
 
-initIncreaseNumberAnimation()
+let animationInited = false;
 
 // -------END-COUNTER-------
 
 // -------START-FORM-OTHER-------
 
 let id_budget = document.querySelector('#budget').addEventListener('change', function handleSelectChange(event) {   
+    
     if (event.target.value === 'other'){
         let formContainer = document.createElement('div');
             formContainer.classList.add('form__group', 'form__other-input');
@@ -51,3 +52,28 @@ let id_budget = document.querySelector('#budget').addEventListener('change', fun
 
 // -------END-FORM-OTHER-------
 
+// -------START-HEADER-SCROLL-------
+
+function updateScroll() {
+
+    if(window.scrollY > 0){
+        document.querySelector('header').classList.add('header__scrolled');
+    }else {
+        document.querySelector('header').classList.remove('header__scrolled');
+    }
+
+    // start counter
+
+    let countElementPosition = document.querySelector('.features__clients-count').offsetTop;
+    let windowBottomPosition = window.scrollY + window.innerHeight;
+        
+        if(windowBottomPosition >= countElementPosition && !animationInited){
+            animationInited = true;
+            initIncreaseNumberAnimation()
+        }
+
+};
+
+// -------END-HEADER-SCROLL-------
+
+window.addEventListener('scroll', updateScroll);
