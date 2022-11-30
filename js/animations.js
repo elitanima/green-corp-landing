@@ -77,3 +77,24 @@ function updateScroll() {
 // -------END-HEADER-SCROLL-------
 
 window.addEventListener('scroll', updateScroll);
+
+// -------START-SMOOTH-SCROLL------- // Safari(баг: скроллит быстро)
+
+function onLinkClick(event) {
+    event.preventDefault();
+    document.querySelector(event.target.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
+function addSmoothScroll(anchor) {
+    anchor.addEventListener('click', onLinkClick);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    addSmoothScroll(anchor);
+  });
+  
+addSmoothScroll(document.querySelector('.more-button'));
+
+// -------END-SMOOTH-SCROLL-------
