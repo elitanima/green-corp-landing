@@ -80,15 +80,13 @@ window.addEventListener('scroll', updateScroll);
 
 // -------START-SMOOTH-SCROLL------- // Safari(баг: скроллит быстро)
 
-function onLinkClick(event) {
-    event.preventDefault();
-    document.querySelector(event.target.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-    });
-}
-
 function addSmoothScroll(anchor) {
-    anchor.addEventListener('click', onLinkClick);
+    anchor.addEventListener('click', function(el){
+        el.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
 }
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
